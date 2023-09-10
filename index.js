@@ -29,25 +29,25 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/:date?", function (req, res) {
   let date;
 
-  // get date from request
+  // get reqDate from request
   let reqDate = req.params.date;
 
-  // if date is empty, set date to current date
+  // if reqDate is empty, set date to current date
   if (!reqDate) {
     date = new Date();
   }
 
-  // if date is a number in Unix format, convert to date
+  // if reqDate is a number in Unix format, convert to date
   if (!isNaN(reqDate)) {
     date = new Date(parseInt(reqDate));
   }
 
-  // if date is a string, convert to date
+  // if reqDate is a string, convert to date
   if (isNaN(date)) {
     date = new Date(reqDate);
   }
 
-  // if date is invalid, return error
+  // if reqDate is invalid, return error
   if (isNaN(date)) {
     res.json({ error: "Invalid Date" });
   }
